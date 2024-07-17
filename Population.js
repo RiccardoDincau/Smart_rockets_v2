@@ -24,10 +24,12 @@ class Population {
             let activations = [];
             for (let j = 0; j < 3; j++) {
                 angs.push(Math.PI * 2 * Math.random())
+                activations[j] = [];
+                for (let h = 0; h < simFrames; h++) {
+                    activations[j][h] = Math.random() > 0.5;
+                }
             }
-            for (let j = 0; j < simFrames; j++) {
-                activations[j] = Math.random() > 0.5;
-            }
+            
             this.rockets[i].initProps(angs, activations);
         }
     }
@@ -63,12 +65,23 @@ class Population {
         console.log("PAmr: ", this.pAngMutRate);
         console.log("Amr: ", this.actMutRate);
         for (let i = 0; i < rocketsNumber; i++) {
+            let mate;
             let index = Math.floor((Math.random() ** 1.3) * rocketsNumber);
-            newRockets[i] = this.rockets[index].mutate(this.start, this.pAngMutRate, this.actMutRate);
+
+            newRockets[i] = this.rockets[index].mutate(this.start, this.pAngMutRate, this.actMutRate, this.getMate(this.rockets[index]));
         }
         this.rockets = newRockets;
         this.frames = 0;
     }
 
-
+    getMate(rocketA) {
+        let arem = [];
+        for (let rocket of this.rockets) {
+            if (rocket != rocketA && rocketA.speciesDistance(rocket) < 0.15) {
+                arem.push(rocket);
+            }
+        }
+        if (arem.length == 0) return rocketA;
+        return arem[Math.floor(Math.random()*arem.length)];
+    } 
 }
