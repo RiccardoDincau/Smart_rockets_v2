@@ -184,7 +184,7 @@ class Rocket {
         let squareDist = (target.x - this.x) ** 2 + (target.y - this.y) ** 2; 
 
         // Score calculated in this frame (depends on the time and the distance to the target)
-        let s = 1000 * (rocketsNumber / (frame + 1)) / (squareDist);
+        let s = 100000 / (((frame + 1)**(1 / 2)) * (sqrt(squareDist)));
 
         // Update the score if it is better
         if (s > this.score) {
@@ -194,7 +194,7 @@ class Rocket {
         // Stop the rocket if reaches the target
         if (squareDist < 400) {
             this.freeze = true;
-            this.score *= 1.1;
+            this.score *= 1.0000001;
         }
     }
 

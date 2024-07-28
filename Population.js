@@ -50,6 +50,10 @@ class Population {
     }
 
     evolve() {
+        // Update graph
+        graph.addGeneration(this.rockets);
+
+
         // Sort the rockets by score
         this.rockets.sort((a, b) => {return b.score - a.score;});
 
@@ -80,6 +84,4 @@ class Population {
         this.rockets = newRockets;
         this.frames = 0;
     }
-
-
 }
