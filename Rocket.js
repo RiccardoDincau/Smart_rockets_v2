@@ -118,7 +118,7 @@ class Rocket {
             let p = this.props[i];
 
             // Check if the current propeller is active
-            p.active = this.activations[frame];
+            p.active = this.activations[i][frame];
             if (!p.active) {
                 continue;
             }
@@ -232,32 +232,3 @@ class Rocket {
 function clampToInt(n) {
     return 255 - ((Math.floor(n * 32)) % 255);
 }
-
-
-    // mutate(start, pAM, aMR, other) {
-    //     let new_rocket = new Rocket(start.x, start.y, 0);
-
-    //     let propsAngs = [];
-
-    //     for (let i = 0; i < rocketProps.length; i++) {
-    //         let newPropAng = (Math.random() > 0.5 ? this.props[i].ang : other.props[i].ang);
-    //         newPropAng += (Math.random() > pAM ? (Math.random() - 0.5) * 0.5 : 0);
-    //         propsAngs.push(newPropAng);
-    //     } 
-
-    //     let act = [];
-
-    //     for (let i = 0; i < rocketProps.length; i++) {
-    //         let splitPoint = Math.floor(Math.random() * simFrames);
-    //         act[i] = [];
-    //         for (let j = 0; j < simFrames; j++) {
-    //             act[i][j] = (j < splitPoint ? this.activations[i][j] : other.activations[i][j]);
-    //             act[i][j] = (Math.random() > aMR ? act[i][j] : Math.random() > 0.5);
-    //         }
-    //     }
-        
-    //     new_rocket.initProps(propsAngs, act);
-    //     return new_rocket;
-    // }
-
-

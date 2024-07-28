@@ -22,12 +22,14 @@ class Population {
             let angs = [];
             let activations = [];
             for (let j = 0; j < 3; j++) {
-                angs.push(Math.PI * 2 * Math.random())
+                angs.push(Math.PI * 2 * Math.random());
+                activations[j] = [];
+                for (let h = 0; h < simFrames; h++) {
+                    activations[j][h] = Math.random() > 0.5;
+                }
             }
-            for (let j = 0; j < simFrames; j++) {
-                activations[j] = Math.random() > 0.5;
-            }
-            this.rockets.push(new Rocket_asexual(this.start.x, this.start.y, 0, angs, activations));
+            
+            this.rockets.push(new Rocket_sexual(this.start.x, this.start.y, 0, angs, activations));
         }
     }
 
