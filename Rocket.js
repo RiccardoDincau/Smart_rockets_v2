@@ -1,6 +1,5 @@
 const rocketWidth = 15;
 const rocketHeight = 60;
-const rocketColor = 255;
 
 const rocketProps = [
     // {a: 0, r: rocketHeight / 2},
@@ -32,6 +31,10 @@ class Rocket {
         }
 
         this.score = 0;
+
+        this.speciesID = 0;
+
+        this.color = "WHITE"
 
         this.ang = startAngle;
         this.angVel = 0;
@@ -74,6 +77,9 @@ class Rocket {
             this.props.push(new Propeller(Math.cos(prop.a) * prop.r, Math.sin(prop.a) * prop.r, propAngles[i]));
             i++;
         }
+
+        this.calculateSpeciesID();
+
     }
 
     // Draw the rockets
@@ -81,7 +87,7 @@ class Rocket {
         rectMode(CENTER);
         stroke(0);
         strokeWeight(1);
-        fill(rocketColor);
+        fill(this.color);
         push();
 
         translate(this.x, this.y);
@@ -198,5 +204,60 @@ class Rocket {
         this.reset(start.x, start.y, 0);
         return this;
     }
+
+    calculateSpeciesID() {
+        this.speciesID = Math.floor(clampToInt(this.props[0].ang) + clampToInt(this.props[1].ang) * 1000 + clampToInt(this.props[2].ang) * 1000000);
+        this.color = color(this.getID_A(), this.getID_B(), this.getID_C());
+    }
+
+    speciesDistance(other) {
+        return ((other.getID_A() - this.getID_A()) ** 2 + 
+            (other.getID_B() - this.getID_B()) ** 2 + 
+            (other.getID_C() - this.getID_C()) ** 2) / 3000000;
+    }
+
+    getID_A() {
+        return this.speciesID % 1000;
+    }
+
+    getID_B() {
+        return (this.speciesID % 1000000) / 1000;
+    }
+
+    getID_C() {
+        return this.speciesID / 1000000;
+    }
 }
+
+function clampToInt(n) {
+    return 255 - ((Math.floor(n * 32)) % 255);
+}
+
+
+    // mutate(start, pAM, aMR, other) {
+    //     let new_rocket = new Rocket(start.x, start.y, 0);
+
+    //     let propsAngs = [];
+
+    //     for (let i = 0; i < rocketProps.length; i++) {
+    //         let newPropAng = (Math.random() > 0.5 ? this.props[i].ang : other.props[i].ang);
+    //         newPropAng += (Math.random() > pAM ? (Math.random() - 0.5) * 0.5 : 0);
+    //         propsAngs.push(newPropAng);
+    //     } 
+
+    //     let act = [];
+
+    //     for (let i = 0; i < rocketProps.length; i++) {
+    //         let splitPoint = Math.floor(Math.random() * simFrames);
+    //         act[i] = [];
+    //         for (let j = 0; j < simFrames; j++) {
+    //             act[i][j] = (j < splitPoint ? this.activations[i][j] : other.activations[i][j]);
+    //             act[i][j] = (Math.random() > aMR ? act[i][j] : Math.random() > 0.5);
+    //         }
+    //     }
+        
+    //     new_rocket.initProps(propsAngs, act);
+    //     return new_rocket;
+    // }
+
 
