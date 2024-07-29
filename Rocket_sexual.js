@@ -30,9 +30,9 @@ class Rocket_sexual extends Rocket{
     }
 
     chooseMate(otherRockets) {
-        otherRockets.sort((other) => this.speciesDistance(other));
+        otherRockets.sort((A, B) => this.speciesDistance(B) * B.score - this.speciesDistance(A) * A.score);
 
-        let index = Math.floor((Math.random() ** 1.3) * otherRockets.length);
+        let index = Math.floor((Math.random() ** 1.1) * otherRockets.length);
 
         return otherRockets[index];
     } 

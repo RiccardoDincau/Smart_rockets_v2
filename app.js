@@ -9,7 +9,7 @@ let graph;
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
-    graph = new Graph({x: 10, y:320}, 400, 300);
+    graph = new Graph({x: 10, y:850}, 400, 800);
 
     population = new Population(rocketsNumber, {x: windowWidth / 2, y: 700}, {x: windowWidth / 2, y: 150});
 

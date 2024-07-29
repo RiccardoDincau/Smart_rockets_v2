@@ -3,6 +3,7 @@ class Population {
         this.dim = dim;
         this.start = start;
         this.target = target;
+        this.targetRadius = 20;
 
         this.rockets = [];
 
@@ -10,6 +11,8 @@ class Population {
 
         this.pAngMutRate = propAngleMutatioRate;
         this.actMutRate = activationMutationRate;
+
+        this.theoreticalScore = 0;
 
         this.scores = [];
         for (let i = 0; i < this.dim; i++) {
@@ -31,19 +34,20 @@ class Population {
             
             this.rockets.push(new Rocket_sexual(this.start.x, this.start.y, 0, angs, activations));
         }
+        this.theoreticalScore = (100000 / (((simFrames + 1)**(1 / 2)) * (sqrt(this.targetRadius)))) * 1.01
     }
 
     update() {
         for (let i = 0; i < this.dim; i++) {
             this.rockets[i].update(this.frames);
-            this.rockets[i].updateScore(this.target, this.frames);
+            this.rockets[i].updateScore(this.target, this.frames, this.theoreticalScore);
         }
         this.frames++;
     }
 
     draw() {
         fill(255, 50, 50);
-        circle(this.target.x, this.target.y, 20);
+        circle(this.target.x, this.target.y, this.targetRadius);
         for (let rocket of this.rockets) {
             rocket.draw();
         }

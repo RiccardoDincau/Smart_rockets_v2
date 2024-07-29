@@ -175,7 +175,7 @@ class Rocket {
     }
 
     // Score function
-    updateScore(target, frame) {
+    updateScore(target, frame, maxTheorethicalScore) {
         if (this.freeze) {
             return; 
         }
@@ -194,8 +194,10 @@ class Rocket {
         // Stop the rocket if reaches the target
         if (squareDist < 400) {
             this.freeze = true;
-            this.score *= 1.0000001;
+            this.score *= 1.01;
         }
+
+        this.score /= maxTheorethicalScore;
     }
 
 
