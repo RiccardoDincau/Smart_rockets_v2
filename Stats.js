@@ -12,20 +12,25 @@ class Graph {
 
         this.bestScore = 0;
         this.worstScore = Infinity;
+
+        this.circleDiameter = 7; //px
+
+        this.padding = 10; //px
     }
 
     draw() {
-        fill(70);
+        fill(202, 240, 248);
         rect(this.origin.x + this.width / 2, this.origin.y - this.height / 2, this.width, this.height);
         for (let gen = 0; gen < this.generationsData.length; gen++) {
             let genData = this.generationsData[gen];
 
             for (let rocket of genData) {
-                let y = map(rocket.score, this.worstScore, this.bestScore, this.origin.y, this.origin.y - this.height);
-                let x = this.origin.x + gen * this.width / this.currentGeneration;
+                let y = map(rocket.score, this.worstScore, this.bestScore, this.origin.y - this.padding, this.origin.y - this.height + this.padding);
+                let x = this.padding + this.origin.x + gen * this.width / this.currentGeneration;
 
-                stroke(rocket.color);
-                strokeWeight(5);
+                fill(rocket.color);
+
+                circle(x + this.circleDiameter / 2, y , this.circleDiameter);
 
                 point(x, y);
             }
@@ -49,5 +54,7 @@ class Graph {
             }
         }
         this.currentGeneration++;
+
+        this.draw();
     }
 }

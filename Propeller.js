@@ -12,8 +12,6 @@ class Propeller {
 
     draw() {
         rectMode(CENTER);
-        stroke(0);
-        strokeWeight(1);
         fill(propColor);
         push();
         translate(this.x, this.y);

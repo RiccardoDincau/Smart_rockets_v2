@@ -84,9 +84,7 @@ class Rocket {
 
     // Draw the rockets
     draw() {
-        rectMode(CENTER);
         stroke(0);
-        strokeWeight(1);
         fill(this.color);
         push();
 

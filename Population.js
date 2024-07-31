@@ -46,6 +46,10 @@ class Population {
     }
 
     draw() {
+        fill(30);
+        rectMode(CORNERS);
+        rect(graphWidth, 0, windowWidth, windowHeight);
+        rectMode(CENTER);
         fill(255, 50, 50);
         circle(this.target.x, this.target.y, this.targetRadius);
         for (let rocket of this.rockets) {
