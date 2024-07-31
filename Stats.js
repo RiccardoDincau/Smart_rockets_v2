@@ -22,7 +22,7 @@ class Graph {
 
             for (let rocket of genData) {
                 let y = map(rocket.score, this.worstScore, this.bestScore, this.origin.y, this.origin.y - this.height);
-                let x = this.origin.x + gen * this.genXOffset;
+                let x = this.origin.x + gen * this.width / this.currentGeneration;
 
                 stroke(rocket.color);
                 strokeWeight(5);
@@ -39,8 +39,6 @@ class Graph {
                 score: rocket.score,
                 color: rocket.color
             })
-
-            console.log(rocket.score);
 
             if (rocket.score > this.bestScore) {
                 this.bestScore = rocket.score;

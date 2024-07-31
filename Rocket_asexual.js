@@ -6,6 +6,7 @@
         } 
         let act = [];
         for (let j = 0; j < this.props.length; j++) {
+            act[j] = [];
             for (let i = 0; i < simFrames; i++) {
                 act[j][i] = (Math.random() > activationsMutationRate ? this.activations[j][i] : Math.random() > 0.5);
             }
