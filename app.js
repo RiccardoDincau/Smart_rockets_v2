@@ -56,10 +56,10 @@ function change_repr() {
 
     let is_sexual_repr = population.sexual_repr;
     if (is_sexual_repr) {
-        population = new Population(rocketsNumber, {x: windowWidth / 2, y: 700}, {x: windowWidth / 2, y: 150}, showedNumber, false);
+        population = new Population(rocketsNumber, {x: (windowWidth - graphWidth) / 2 + graphWidth, y: 700}, {x: (windowWidth - graphWidth) / 2 + graphWidth, y: 150}, showedNumber, false);
         change_repr_button.elt.innerText = "Asexual Reproduction";
     } else {
-        population = new Population(rocketsNumber, {x: windowWidth / 2, y: 700}, {x: windowWidth / 2, y: 150}, showedNumber, true);
+        population = new Population(rocketsNumber, {x: (windowWidth - graphWidth) / 2 + graphWidth, y: 700}, {x: (windowWidth - graphWidth) / 2 + graphWidth, y: 150}, showedNumber, true);
         change_repr_button.elt.innerText = "Sexual Reproduction";
     }
 
