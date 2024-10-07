@@ -32,6 +32,8 @@ class Rocket {
 
         this.score = 0;
 
+        this.show = true;
+
         this.speciesID = 0;
 
         this.color = "WHITE"

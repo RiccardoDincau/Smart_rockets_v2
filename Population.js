@@ -1,9 +1,11 @@
 class Population {
-    constructor (dim, start, target) {
+    constructor (dim, start, target, showedNumber) {
         this.dim = dim;
         this.start = start;
         this.target = target;
         this.targetRadius = 20;
+
+        this.showedNumber = showedNumber;
 
         this.rockets = [];
 
@@ -33,6 +35,10 @@ class Population {
             }
             
             this.rockets.push(new Rocket_sexual(this.start.x, this.start.y, 0, angs, activations));
+
+            if (i >= this.showedNumber) {
+                this.rockets[i].show = false;
+            }
         }
         this.theoreticalScore = (100000 / (((simFrames + 1)**(1 / 2)) * (sqrt(this.targetRadius)))) * 1.01
     }
@@ -53,7 +59,7 @@ class Population {
         fill(255, 50, 50);
         circle(this.target.x, this.target.y, this.targetRadius);
         for (let rocket of this.rockets) {
-            rocket.draw();
+            if (rocket.show) rocket.draw();
         }
     }
 
@@ -88,6 +94,10 @@ class Population {
 
             // Mutate the rocket, give the rockets list without the generating rocket
             newRockets[i] = this.rockets[index].mutate(this.start, this.pAngMutRate, this.actMutRate, this.rockets.filter(rocket => rocket != this.rockets[index]));
+        
+            if (i >= this.showedNumber) {
+                newRockets[i].show = false;
+            }
         }
         this.rockets = newRockets;
         this.frames = 0;

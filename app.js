@@ -1,5 +1,7 @@
 const simFrames = 60 * 10;
-const rocketsNumber = 30;
+const rocketsNumber = 70;
+const showedNumber  = 35;
+
 let population;
 const propAngleMutatioRate = 0.8;
 const activationMutationRate = 0.9;
@@ -17,7 +19,7 @@ function setup() {
 
     graph = new Graph({x: 0, y: windowHeight}, graphWidth, windowHeight);
 
-    population = new Population(rocketsNumber, {x: windowWidth / 2, y: 700}, {x: windowWidth / 2, y: 150});
+    population = new Population(rocketsNumber, {x: windowWidth / 2, y: 700}, {x: windowWidth / 2, y: 150}, showedNumber);
 
     population.init();
 
