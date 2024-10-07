@@ -1,9 +1,10 @@
 class Population {
-    constructor (dim, start, target, showedNumber) {
+    constructor (dim, start, target, showedNumber, sexual_repr = true) {
         this.dim = dim;
         this.start = start;
         this.target = target;
         this.targetRadius = 20;
+        this.sexual_repr = sexual_repr;
 
         this.showedNumber = showedNumber;
 
@@ -33,9 +34,11 @@ class Population {
                     activations[j][h] = Math.random() > 0.5;
                 }
             }
-            
-            this.rockets.push(new Rocket_sexual(this.start.x, this.start.y, 0, angs, activations));
-
+            if (this.sexual_repr) {
+                this.rockets.push(new Rocket_sexual(this.start.x, this.start.y, 0, angs, activations));
+            } else {
+                this.rockets.push(new Rocket_asexual(this.start.x, this.start.y, 0, angs, activations));
+            }
             if (i >= this.showedNumber) {
                 this.rockets[i].show = false;
             }
