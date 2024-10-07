@@ -1,6 +1,8 @@
 # Smart rockets
 This is my take on Jer Thorp's smart rockets genethic alghorithm. I was heavily inspired by The Coding Train video (https://www.youtube.com/watch?v=bGz7mv2vD6g).
+
 (Link to a netlify hosted website of my simulation: https://smart-rockets-changeable-repr.netlify.app/)
+
 The simulation is divided in two main parts: physics and genetic alghorithm.
 
 ## Phyisic
