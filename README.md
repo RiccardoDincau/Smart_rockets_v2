@@ -34,14 +34,13 @@ before that point, 'parent A' activations are passed, and after it, 'parent B' a
 The child then undergoes the same mutation phase as in asexual reproduction.
 
 ### Observations
-This is quite a rudimental simulation, but some intresting mecanisms emerge. 
+This is a fairly rudimentary simulation, but some interesting mechanisms emerge.
 
-For example, even tho we consider sexual reproduction more advanced, in this simulation I found that asexual reproduction is faster on reaching a good perfomance 
-as a population. This might be due to the fact that the task is quite simple and the added complexity of sexual reproduction is not worth the hustle.
+For example, even though sexual reproduction is generally considered more advanced, I found that in this simulation, asexual reproduction leads to faster improvements in population performance. This might be due to the simplicity of the task, where the added complexity of sexual reproduction doesn't provide enough benefit to justify the extra effort.
 
-This said it is amazing seeing the main carateristic of sexual reproduction evolving even in this simple setting. In fact you can observe how in the sexual 
+That said it is amazing seeing the main carateristic of sexual reproduction evolving even in this simple setting. In fact you can observe how in the sexual 
 reproduction population, even in the long run, many different species are still present, demonstrating the power of keeping different sets of genes in
 the population. This is quite in contrast with what can be seen in the asexual reproduciton simulations where there is always one species that takes
 over the others at some point.
 
-Maybe if the enviorment was more dynamic (Maybe moving the target) it would be possible to observe an overtake in "performance" of the sexual reproduction.
+Maybe if the enviorment was more dynamic (Maybe slightly moving the target?) it would be possible to observe an overtake in terms of "performance" of the sexual reproduction.
